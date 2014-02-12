@@ -37,7 +37,7 @@ var formatOutput = function(success, file, opt) {
 
 var jshintPlugin = function(opt){
   if (!opt) opt = {};
-  var globals = {};
+  var globals = opt.globals || {};
 
   if (typeof opt === 'string'){
     opt = jshintcli.loadConfig(opt);
@@ -46,7 +46,6 @@ var jshintPlugin = function(opt){
 
   if (opt.globals) {
     globals = opt.globals;
-    delete opt.globals;
   }
 
   return map(function (file, cb) {
